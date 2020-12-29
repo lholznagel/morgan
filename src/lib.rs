@@ -70,11 +70,11 @@ impl Log for Morgan {
 
         let lvl_msg = if self.color {
             match record.level() {
-                Level::Error => "\x1B[0;31mError \x1B",
-                Level::Warn => "\x1B[0;93mWarn  \x1B",
-                Level::Info => "\x1B[0;34mInfo  \x1B",
-                Level::Debug => "\x1B[0;35mDebug \x1B",
-                Level::Trace => "\x1B[0;36mTrace \x1B",
+                Level::Error => "\x1B[1;31mError \x1B",
+                Level::Warn => "\x1B[1;93mWarn  \x1B",
+                Level::Info => "\x1B[1;34mInfo  \x1B",
+                Level::Debug => "\x1B[1;35mDebug \x1B",
+                Level::Trace => "\x1B[1;36mTrace \x1B",
             }
         } else {
             match record.level() {
@@ -88,7 +88,7 @@ impl Log for Morgan {
 
         if self.color {
             println!(
-                "\x1B[1;30m[{:10.3?}] > \x1B {}[1;30m>\x1B[0m {}",
+                "\x1B[1;90m[{:10.3?}] > \x1B {}[1;90m>\x1B[1;39m {}",
                 self.time.elapsed().as_secs_f64(),
                 lvl_msg,
                 record.args()
